@@ -12,11 +12,16 @@ def plot_predictions(X, y_pred, title="Predictions"):
     - y_pred: The predicted labels.
     - title: The title of the plot.
     """
-    color_map = ListedColormap(['mediumseagreen', 'mediumblue'])
     
-    plt.figure(figsize=(8, 5))
-    plt.scatter(X[:, 0], X[:, 1], c=y_pred, cmap=color_map, edgecolor='k', s=20)
-    plt.title(title, fontsize=18)
+    color_map = ListedColormap(['mediumseagreen', 'mediumblue'])
+    # Creating a figure
+    fig, ax = plt.subplots(figsize=(8,5))
+    # Creating a scatter plot
+    scatter = ax.scatter(X[:, 0], X[:, 1], c=y_pred, s=50, cmap=color_map, alpha = 0.4)
+    # Adding a legend to the plot
+    legend = ax.legend(handles=scatter.legend_elements()[0], labels=['0', '1'], title = 'Classes', fontsize = 11)
+    legend.get_title().set_fontsize(13)
+    ax.set_title(title, fontsize=18)    
 
     plt.show()
 
@@ -30,22 +35,30 @@ def compare_with_correct(X, y_true, y_pred):
     """
     
     color_map = ListedColormap(['mediumseagreen', 'mediumblue'])
+    labels = ['0', '1']
+    y_plot = y_pred.copy()
     # Creating a figure and a set of subplots
     fig, ax = plt.subplots(1, 2, figsize=(14, 5))
     # Plotting the test set with the correct labels
     scatter = ax[0].scatter(X[:, 0], X[:, 1], c=y_true, s=50, cmap=color_map, alpha=0.4)
-    ax[0].legend(handles=scatter.legend_elements()[0], labels=['0', '1'], title='Classes')
+    legend = ax[0].legend(handles=scatter.legend_elements()[0], labels = labels, title='Classes', fontsize = 11)
+    legend.get_title().set_fontsize(13)
     ax[0].set_title("Correct Classes", fontsize=18)
-    # Creating a new color map for the predicted labels
-    color_map2 = ListedColormap(['mediumseagreen', 'mediumblue', 'firebrick'])
     # Finding the indices of the points that were classified incorrectly
     incorrect_indices = np.where(y_pred != y_true)[0]
-    # The labels of the points that were classified incorrectly are set to 2
-    y_plot = y_pred.copy()
-    y_plot[incorrect_indices] = 2
+    
+    # Check if there are misclassified points
+    if incorrect_indices.sum() > 0:
+        # Creating a new color map for the predicted labels
+        color_map = ListedColormap(['mediumseagreen', 'mediumblue', 'firebrick'])
+        # The labels of the points that were classified incorrectly are set to 2
+        y_plot[incorrect_indices] = 2
+        labels = ['0', '1', 'Misclassified']
+        
     # Plotting the test set with the predicted labels
-    scatter = ax[1].scatter(X[:, 0], X[:, 1], c=y_plot, s=50, cmap=color_map2, alpha=0.4)
-    ax[1].legend(handles=scatter.legend_elements()[0], labels=['0', '1', 'Incorrect'], title='Classes')
+    scatter = ax[1].scatter(X[:, 0], X[:, 1], c=y_plot, s=50, cmap=color_map, alpha=0.4)
+    legend = ax[1].legend(handles=scatter.legend_elements()[0], labels = labels, title='Classes', fontsize = 11)
+    legend.get_title().set_fontsize(13)
     ax[1].set_title("Predicted Classes", fontsize=18)
     
     plt.show()
@@ -69,9 +82,9 @@ def visualize_confusion_matrix(y_true, y_pred):
                 cmap="YlOrBr", 
                 annot_kws={"size": 18})
     plt.title('Confusion Matrix', fontsize=18)
-    ax.set_xlabel('Predicted labels', fontsize=16)
-    ax.set_ylabel('True labels', fontsize=16)
-    ax.set_xticklabels(['Class 0', 'Class 1'], fontsize=14)
-    ax.set_yticklabels(['Class 0', 'Class 1'], fontsize=14)
+    plt.xlabel('Predicted labels', fontsize=16)
+    plt.ylabel('True labels', fontsize=16)
+    plt.xticks([0.5, 1.5], ['Class 0', 'Class 1'], fontsize=14)
+    plt.yticks([0.5, 1.5], ['Class 0', 'Class 1'], fontsize=14)
   
     plt.show()
