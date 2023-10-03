@@ -7,8 +7,6 @@ import numpy as np
 # Visualize the predictions made by the KNN algorithm.
 def plot_predictions(X, y_pred, title="Predictions"):
     """
-    
-    
     Parameters:
     - X: The dataset.
     - y_pred: The predicted labels.
