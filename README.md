@@ -3,7 +3,7 @@
 Welcome to the K-Nearest Neighbors (KNN) Algorithm repository, an integral part of my exploration into machine learning algorithms, as documented on my blog [Data Science For Lifelong Learning](https://datasciencelifelonglearn.blogspot.com). This space is meticulously curated to offer both novices and experts a deep understanding of the KNN algorithm, its applications, and its significance in the realm of supervised learning.
 
 <p align="left">
-  <img src="./Images/Gif.gif" alt="KNN Banner" width="420"> <!-- You can adjust the width value as needed -->
+  <img src="./Images/Gif_3.gif" alt="KNN Banner" width="420"> <!-- You can adjust the width value as needed -->
 </p>
 
 ## Table of Contents
