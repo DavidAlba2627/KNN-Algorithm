@@ -6,7 +6,7 @@ In the diverse landscape of machine learning algorithms, the K-Nearest Neighbors
 
 ## Detailed Description
 
-KNN operates on a straightforward principle: it classifies a data point based on the majority class of its 'k' nearest neighbors. The 'k' in KNN represents the number of neighbors the algorithm considers to determine the class of a given data point. The steps involved in the KNN algorithm are as follows:
+KNN operates on a straightforward principle: it classifies a data point based on the majority class of its 'k' nearest neighbors. The 'k' in KNN represents the number of neighbors the algorithm considers to determine the class of a given data point. The steps involved in this algorithm are as follows:
 
 1. **Selecting the Number of Neighbors (k)**: Choose the number of neighbors. It plays a crucial role in the performance of the KNN algorithm. A smaller 'k' value can capture noise, while a larger 'k' might smooth out the decision boundaries too much.
 
